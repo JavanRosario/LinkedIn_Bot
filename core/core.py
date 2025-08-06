@@ -34,14 +34,12 @@ class LinkedinBot:
         sleep(TIME_TO_SLEEP)
         self.put_email.send_keys(str(self.email)).perform()
         # password input selection
-
         self.put_password = WebDriverWait(self.driver, TIME_TO_SLEEP).until(
             EC.presence_of_element_located(
                 (By.XPATH, "//input[@name='session_password']"))
         )
         sleep(TIME_TO_SLEEP)
         self.put_password.send_keys(str(self.password))
-
         # submit input click
         self.login_click = WebDriverWait(self.driver, TIME_TO_SLEEP).until(
             EC.presence_of_element_located(
