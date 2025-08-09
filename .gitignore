@@ -15,7 +15,7 @@ env/
 
 *.log
 
-config/.env
+
 
 
 *.pot
