@@ -28,28 +28,37 @@ class LinkedInLogin:
         self.put_email = ActionChains(self.driver)
 
     def login(self):
+
         # linkedin login page
         self.driver.get('https://www.linkedin.com/login/')
         sleep(TIME_TO_SLEEP)
+
+        # type email using ActionChains
         self.put_email.send_keys(str(self.email)).perform()
-        # password input selection
+
+        # wait for password field
         self.put_password = WebDriverWait(self.driver, TIME_TO_SLEEP).until(
             EC.presence_of_element_located(
                 (By.XPATH, "//input[@name='session_password']"))
         )
         sleep(TIME_TO_SLEEP)
+
+        # type password
         self.put_password.send_keys(str(self.password))
-        # submit input click
+
+        # wait for and click login button
         self.login_click = WebDriverWait(self.driver, TIME_TO_SLEEP).until(
             EC.presence_of_element_located(
                 (By.XPATH, "//form//button[@type='submit']")))
 
+        # wait and go to "My Network" page
         sleep(TIME_TO_SLEEP)
         self.login_click.click()
 
         sleep(TIME_TO_SLEEP)
         self.driver.get('https://www.linkedin.com/mynetwork/grow/')
 
+        # wait and click "Show all" button
         self.show_all = WebDriverWait(self.driver, TIME_TO_SLEEP).until(
             EC.presence_of_element_located((By.XPATH, "//button[.//span[contains(text(), 'Exibir tudo')]]")))
         self.show_all.click()
