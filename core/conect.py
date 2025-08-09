@@ -57,8 +57,6 @@ class ConectDevs(LinkedInLogin):
                         # force click via JS
                         self.driver.execute_script(
                             "arguments[0].click();", button)
-                    except Exception as e:
-                        ...
             except KeyboardInterrupt:
                 # stop loop CTRL+C in terminal
                 break
